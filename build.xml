@@ -1,0 +1,42 @@
+<project default="run">
+<property name="src.dir" value="src"/>
+<property name="bin.dir" value="bin"/>
+<property name="jar.dir" value="exe"/>
+<property name="main-class" value="main"/>
+<property name="jar-name" value="ABR.jar"/>
+
+<target name="doc" depends="clean">
+	<javadoc sourcepath=${source
+
+<target name="clean">
+	<delete dir="${bin.dir}"/>
+	<delete dir="${jar.dir}"/>
+	<echo message="nettoyage termine"/>
+</target>
+
+<target name="compile" depends="clean">
+	<mkdir dir="${src.dir}"/>
+	<mkdir dir="${bin.dir}"/>
+	<javac srcdir="${src.dir}" destdir="${bin.dir}" />
+	<echo message="compilation termine"/>
+</target>
+
+<target name="jar" depends="compile">
+	<mkdir dir="${jar.dir}"/>
+
+	<jar destfile="${jar.dir}/${jar-name}" basedir="${bin.dir}" >
+		<manifest>
+			<attribute name="Main-Class" value="${main-class}" />
+		</manifest>
+	</jar>
+	<echo message="creation jar ok"/>
+</target>
+
+<target name="run" depends="jar">
+	
+	<java jar="${jar.dir}/${jar-name}" fork="true" />
+	
+</target>
+</project>
+
+
