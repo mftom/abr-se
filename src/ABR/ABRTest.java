@@ -22,10 +22,20 @@ public class ABRTest {
 	}
 	
 	@Test
+	public void testnbElements() { //la méthode nbElements prend en paramètre un node (erreur)
+		ABR a = new ABR();
+		Node n = new Node(5);
+		a.insert(3);
+		a.insert(12);
+		assertEquals(2, a.nbElements(n));
+	}
+	
+	
+	@Test
 	public void testContains() {
 		ABR a = new ABR();
 		a.insert(4);
-		assertEquals(true, a.contains(4));
+		assertTrue(a.contains(4));
 	}
 	
 	@Test
@@ -38,6 +48,15 @@ public class ABRTest {
 		ABR a = new ABR();
 		a.toList(l);
 		assertEquals(true, a.contains(4));
+	}
+	
+	@Test
+	public void testQuestion4() { // Je n'ai pas réussi à fausser les résultats de contains
+		ABR a = new ABR();
+		a.insert(4);
+		a.insert(-8);
+		a.insert(12);
+		assertTrue(a.contains(-8));
 	}
 
 }
