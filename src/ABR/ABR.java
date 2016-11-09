@@ -56,5 +56,26 @@ public class ABR {
 		}
 		return nbnodes;
 	}	
+	
+	public boolean contains(int value) {
+		Node current = root;
+		while (current != null) {
+			if (current.data == value) {
+				return true;
+			}else if(current.data > value){
+				current = current.left;
+			}else if(current.data < value){
+				current = current.right;
+			}
+		}
+		return false;
+	}
+	
+	public void toList(java.util.List<java.lang.Integer> l) {
+		for (int i = 0; i < l.size(); i++) {
+			this.insert(l.get(i));
+		}
+	}
+
 
 }
